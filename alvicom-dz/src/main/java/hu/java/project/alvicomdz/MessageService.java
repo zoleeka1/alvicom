@@ -19,4 +19,6 @@ public interface MessageService {
 	public String getResultList(Map<String, List<ResultBean>> resultMap, int sorszam);
 	
 	public void createValues(String file, int size);
+	
+	public void createSchema(String folder);
 }

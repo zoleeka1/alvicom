@@ -24,20 +24,23 @@ public class App {
 	}
 
 	public static void main(String[] args) {
-		String file = "";
-		int size = 0;
-		if (args != null && args.length != 0 && args[0] == null) {
-			file = "c:/Temp/json/tranzakciok.json";
-		} else {
-			file = args[0];
-		}
-		if (args != null && args.length != 0 && args[1] == null) {
-			size = 1000;
-		} else {
-			size = Integer.valueOf(args[1]);
-		}
 		szamlaList = createSzamlaList();
 		service = new MessageServiceImpl();
+		//Schema gen
+//		service.createSchema( "c:/Temp/json");
+		String file = "";
+		int size = 0;
+		if (args != null && args.length != 0 && args[0] != null) {
+			file = args[0];
+		} else {
+			file = "c:/Temp/json";
+		}
+		if (args != null && args.length != 0 && args[1] != null) {
+			size = Integer.valueOf(args[1]);
+		} else {
+			size = 1000;
+		}
+		file += "/tranzakciok.json";
 		List<ResultBean> resultList = new ArrayList<ResultBean>();
 		int sorszam = 0;
 		Map<String, List<ResultBean>> resultMap = createEmptyResultMap();

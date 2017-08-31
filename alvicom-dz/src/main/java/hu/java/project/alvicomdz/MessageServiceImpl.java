@@ -24,29 +24,27 @@ import com.fasterxml.jackson.module.jsonSchema.factories.SchemaFactoryWrapper;
  */
 public class MessageServiceImpl implements MessageService {
 
-
-	private static void documentJsonV3Schema(Class<?> documentedClass, String subDir, String outputDir) throws IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		Files.createDirectories(Paths.get(outputDir, subDir));
-		SchemaFactoryWrapper visitor = new SchemaFactoryWrapper();
-		objectMapper.acceptJsonFormatVisitor(objectMapper.constructType(documentedClass), visitor);
-		JsonSchema jsonSchema = visitor.finalSchema();
-		try (BufferedWriter writer = Files.newBufferedWriter(
-			Paths.get(outputDir, subDir, documentedClass.getSimpleName() + ".json"), StandardCharsets.UTF_8)) {
-			writer.write(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonSchema));
-		}
-	}
-
-	public static void main(String[] args) {
-		String FOLDER = "c:\\Temp\\";
-		String SUB_FOLDER = "json";
+	@Override
+	public void createSchema(String folder) {
 		try {
-			documentJsonV3Schema(TranzakcioList.class, SUB_FOLDER, FOLDER);
+			documentJsonV3Schema(TranzakcioList.class, folder);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
+	private void documentJsonV3Schema(Class<?> documentedClass, String folder) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Files.createDirectories(Paths.get(folder));
+		SchemaFactoryWrapper visitor = new SchemaFactoryWrapper();
+		objectMapper.acceptJsonFormatVisitor(objectMapper.constructType(documentedClass), visitor);
+		JsonSchema jsonSchema = visitor.finalSchema();
+		try (BufferedWriter writer = Files.newBufferedWriter(
+			Paths.get(folder, documentedClass.getSimpleName() + ".json"), StandardCharsets.UTF_8)) {
+			writer.write(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonSchema));
+		}
+	}
+
 	@Override
 	public void createValues(String file, int size) {
 		try (  PrintWriter out = new PrintWriter( file );
@@ -62,10 +60,6 @@ public class MessageServiceImpl implements MessageService {
 		
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
 	private TranzakcioList genTranzakcioList(int size) {
 		List<TranzakcioBean> list = new ArrayList<>();
 		Random r = new Random();
@@ -184,5 +178,6 @@ public class MessageServiceImpl implements MessageService {
 	    long tmp = Math.round(value);
 	    return (double) tmp / factor;
 	}
+
 
 }
