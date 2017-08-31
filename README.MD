@@ -1,9 +1,9 @@
-Alvicom számára tesztfeladat megoldása
-- elsõ paraméter futtatáskor a generálandó tesztállomány helye (alapértelmezetten, ha nem adjuk meg: c:/Temp/json)
-- második paraméter egy egész szám, mely a generálandó tranzakciók számát adja meg (alapértelmezetten, ha nem adjuk meg: 1000)
+ï»¿Alvicom szÃ¡mÃ¡ra tesztfeladat megoldÃ¡sa
+- elsÅ‘ paramÃ©ter futtatÃ¡skor a generÃ¡landÃ³ tesztÃ¡llomÃ¡ny helye (alapÃ©rtelmezetten, ha nem adjuk meg: c:/Temp/json)
+- mÃ¡sodik paramÃ©ter egy egÃ©sz szÃ¡m, mely a generÃ¡landÃ³ tranzakciÃ³k szÃ¡mÃ¡t adja meg (alapÃ©rtelmezetten, ha nem adjuk meg: 1000)
 
-A program egyszer fut le, és leáll az összes érték feldolgozása után, 10 soronként számlánként megjelennek a tranzakciók.
+A program egyszer fut le, Ã©s leÃ¡ll az Ã¶sszes Ã©rtÃ©k feldolgozÃ¡sa utÃ¡n, 10 soronkÃ©nt szÃ¡mlÃ¡nkÃ©nt megjelennek a tranzakciÃ³k.
 
-Futtatás: java -jar alvicom-dz-jar.jar "c:/Temp" 20
+FuttatÃ¡s: java -jar alvicom-dz-jar.jar "c:/Temp" 20
 
-Deák Zoltán / zoleeka1@gmail.com
+DeÃ¡k ZoltÃ¡n / zoleeka1@gmail.com
